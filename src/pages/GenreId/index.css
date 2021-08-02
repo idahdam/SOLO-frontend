@@ -1,0 +1,42 @@
+.genre-hero {
+  text-align: center;
+  padding: 8rem;
+  background-color: #213263;
+}
+
+.genre-hero-text {
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #f6e82b;
+}
+
+.genre-list-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.genre-list-column {
+  float: left;
+  width: 33.33%;
+}
+
+.genre-list-container {
+  margin: auto;
+  width: 85%;
+  padding: 5%;
+}
+
+.genre-each-name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.125rem;
+  padding-top: 1rem;
+}
+
+.genre-each-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+}

@@ -1,0 +1,50 @@
+.artistid-hero {
+  background-color: #213263;
+}
+
+.artistid-hero-text {
+  margin: auto;
+  padding-top: 10%;
+  text-align: left;
+  font-weight: bold;
+  font-size: 3rem;
+  color: #f6e82b;
+}
+
+.artistid-hero-description {
+  padding-top: 1rem;
+  color: #f6e82b;
+}
+
+.artistid-hero-column {
+  float: left;
+}
+
+.artistid-hero-left {
+  width: 25%;
+}
+
+.artistid-hero-right {
+  width: 75%;
+}
+
+.artistid-hero-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.artistid-hero-row {
+  padding: 3%;
+}
+.artistid-hero-image-container {
+  margin: 1rem;
+}
+
+/* Clear floats after the columns */
+.artistid-hero-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -48,3 +48,57 @@
   display: table;
   clear: both;
 }
+
+.artistid-songlist-container {
+  padding: 5%;
+}
+
+.artistid-songlist-title {
+  padding-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.artistid-songlist-column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.artistid-songlist-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.artistid-songlist-image {
+  width: 75%;
+}
+
+.artistid-songlist-text {
+  padding-top: 10%;
+  font-weight: bold;
+}
+
+.artistid-songlist-row {
+  padding-top: 1%;
+}
+
+.artistid-songlist-each-column {
+  float: left;
+}
+
+.artistid-songlist-each-left {
+  width: 25%;
+}
+
+.artistid-songlist-each-right {
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.artistid-songlist-each-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -1,0 +1,142 @@
+.songid-hero {
+  background-color: #213263;
+}
+
+.songid-hero-text {
+  margin: auto;
+  padding-top: 10%;
+  text-align: left;
+  font-weight: bold;
+  font-size: 3rem;
+  color: #f6e82b;
+}
+
+.songid-hero-description {
+  padding-top: 1rem;
+  color: #f6e82b;
+}
+
+.songid-hero-column {
+  float: left;
+}
+
+.songid-hero-left {
+  width: 25%;
+}
+
+.songid-hero-right {
+  width: 75%;
+}
+
+.songid-hero-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.songid-hero-row {
+  padding: 3%;
+}
+.songid-hero-image-container {
+  margin: 1rem;
+}
+
+/* Clear floats after the columns */
+.songid-hero-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.songid-songlist-container {
+  padding: 5%;
+}
+
+.songid-songlist-title {
+  padding-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.songid-songlist-column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.songid-songlist-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.songid-songlist-image {
+  width: 75%;
+}
+
+.songid-songlist-text {
+  padding-top: 10%;
+  font-weight: bold;
+}
+
+.songid-songlist-row {
+  padding-top: 1%;
+}
+
+.songid-songlist-each-column {
+  float: left;
+}
+
+.songid-songlist-each-left {
+  width: 25%;
+}
+
+.songid-songlist-each-right {
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.songid-songlist-each-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.songid-reviews {
+  padding: 4%;
+}
+
+.songid-reviews-title {
+  font-weight: bold;
+  font-size: 2rem;
+  padding-bottom: 2rem;
+}
+
+.songid-reviews-content-container {
+  width: 95%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.songid-reviews-column {
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+}
+
+/* Clear floats after the columns */
+.songid-reviews-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.songid-reviews-content-review {
+  padding: 2%;
+}
+
+.songid-reviews-content-reviewer {
+  font-size: 1rem;
+  padding: 0 2% 2% 2%;
+  font-weight: bold;
+}

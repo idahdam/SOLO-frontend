@@ -1,0 +1,15 @@
+.footer-container {
+  background-color: #f6e82b;
+  padding: 1.125rem;
+}
+
+.footer-title {
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  color: #213263;
+}
+
+.footer-creds {
+  text-align: center;
+}

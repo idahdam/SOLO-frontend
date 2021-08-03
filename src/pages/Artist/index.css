@@ -35,8 +35,18 @@
 }
 
 .artist-each-image {
+  transition: 0.3s ease-in-out;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 85%;
+  width: 275px;
+  height: 275px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.artist-each-image:hover {
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 10px 10px 5px grey;
 }

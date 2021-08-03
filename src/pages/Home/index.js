@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import hero from "../../assets/home/hero.png";
-import empty from "../../assets/home/empty-artist.png";
 import pop from "../../assets/home/pop.png";
 import rock from "../../assets/home/rock.png";
 import classic from "../../assets/home/classic.png";
 import rap from "../../assets/home/rap.png";
 import edm from "../../assets/home/edm.png";
 import { Link } from "react-router-dom";
+import { artistService } from "../../services/artistService";
 
 const Home = () => {
+  const [artist, setArtist] = useState([]);
+
+  useEffect(() => {
+    const fetchArtist = async () => {
+      const response = await artistService.getAllArtist();
+      setArtist(response.data);
+    };
+    fetchArtist();
+  }, []);
+
   return (
     <>
       <div className="home-container">
@@ -29,36 +39,31 @@ const Home = () => {
             <div className="home-list-artist-row">
               <div className="home-list-artist-column artist-left">
                 <div className="home-list-artist-each-row">
-                  <div className="home-list-artist-each-column">
-                    <img
-                      src={empty}
-                      alt="artist"
-                      className="home-list-artist-each-image"
-                    />
-                    <div className="home-list-artist-each-text">
-                      Ariana Grande
-                    </div>
-                  </div>
-                  <div className="home-list-artist-each-column">
-                    <img
-                      src={empty}
-                      alt="artist"
-                      className="home-list-artist-each-image"
-                    />
-                    <div className="home-list-artist-each-text">
-                      Ariana Grande
-                    </div>
-                  </div>
-                  <div className="home-list-artist-each-column">
-                    <img
-                      src={empty}
-                      alt="artist"
-                      className="home-list-artist-each-image"
-                    />
-                    <div className="home-list-artist-each-text">
-                      Ariana Grande
-                    </div>
-                  </div>
+                  {artist.length === 0 ? (
+                    <>Loading</>
+                  ) : (
+                    <>
+                      {artist.map((item, index) => {
+                        return (
+                          <div
+                            className="home-list-artist-each-column"
+                            key={index}
+                          >
+                            <Link to={`/artist/${item.artist_id}`}>
+                              <img
+                                src={item.artist_picture}
+                                alt="artist"
+                                className="home-list-artist-each-image"
+                              />
+                            </Link>
+                            <div className="home-list-artist-each-text">
+                              {item.artist_name}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
                 </div>
               </div>
               <div className="home-list-artist-column artist-right">

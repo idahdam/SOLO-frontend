@@ -77,17 +77,35 @@
 }
 
 .home-list-artist-each-image {
+  transition: 0.3s ease-in-out;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 275px;
+  height: 275px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.home-list-artist-each-image:hover {
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 10px 10px 5px grey;
+}
+
+.home-list-genre-each-image {
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 85%;
 }
 
-.home-list-genre-each-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 85%;
+.home-list-genre-each-image:hover {
+  transition: 0.3s ease-in-out;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px grey;
 }
 
 .home-list-artist-each-text {

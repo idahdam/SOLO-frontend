@@ -113,30 +113,35 @@
   padding-bottom: 2rem;
 }
 
-.songid-reviews-content-container {
-  width: 95%;
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  border-radius: 10px;
+  background: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 30px;
 }
 
-.songid-reviews-column {
-  display: inline-block;
-  margin: 0 0 1em;
-  width: 100%;
+.songid-reviews-each {
+  padding: 3%;
 }
 
-/* Clear floats after the columns */
-.songid-reviews-row:after {
-  content: "";
-  display: table;
-  clear: both;
+.songid-reviews-each-review {
+  padding-bottom: 3%;
 }
 
-.songid-reviews-content-review {
-  padding: 2%;
-}
-
-.songid-reviews-content-reviewer {
-  font-size: 1rem;
-  padding: 0 2% 2% 2%;
+.songid-reviews-each-name-rating {
   font-weight: bold;
 }

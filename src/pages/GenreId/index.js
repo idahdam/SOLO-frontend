@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
-import niki from "../../assets/artist/niki.png";
-import { useParams } from "react-router-dom";
+import lowkey from "../../assets/genre/lowkey.png";
+import { Link, useParams } from "react-router-dom";
 
 const GenreId = () => {
   let { type } = useParams();
@@ -14,15 +14,21 @@ const GenreId = () => {
         <div className="genre-list-container">
           <div className="genre-list-row">
             <div className="genre-list-column">
-              <img src={niki} alt="genre" className="genre-each-image" />
+              <Link to="/song/id">
+                <img src={lowkey} alt="genre" className="genre-each-image" />
+              </Link>
               <div className="genre-each-name">Niki</div>
             </div>
             <div className="genre-list-column">
-              <img src={niki} alt="genre" className="genre-each-image" />
+              <Link to="/song/id">
+                <img src={lowkey} alt="genre" className="genre-each-image" />
+              </Link>
               <div className="genre-each-name">Niki</div>
             </div>
             <div className="genre-list-column">
-              <img src={niki} alt="genre" className="genre-each-image" />
+              <Link to="/song/id">
+                <img src={lowkey} alt="genre" className="genre-each-image" />
+              </Link>
               <div className="genre-each-name">Niki</div>
             </div>
           </div>

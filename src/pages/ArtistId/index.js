@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import niki from "../../assets/artist/niki.png";
 import lowkey from "../../assets/genre/lowkey.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { artistService } from "../../services/artistService";
 
 const ArtistId = () => {
+  const [artistId, setArtistId] = useState([]);
+  const { id } = useParams();
+  console.log(id);
+  useEffect(() => {
+    const fetchArtistByid = async (id) => {
+      const response = await artistService.getAllArtistWithSongs(id);
+      setArtistId(response.data);
+      console.log(response.data);
+    };
+
+    fetchArtistByid(id);
+  }, [id]);
+
+  if (artistId.length === 0) return null;
   return (
     <>
       <div className="artistid-container">
@@ -13,17 +28,19 @@ const ArtistId = () => {
             <div className="artistid-hero-column artistid-hero-left">
               <div className="artistid-hero-image-container">
                 <img
-                  src={niki}
+                  src={artistId[0].artist_picture}
                   alt="artistId"
                   className="artistid-hero-image"
                 />
               </div>
             </div>
             <div className="artistid-hero-column artistid-hero-right">
-              <div className="artistid-hero-text">NIKI</div>
+              <div className="artistid-hero-text">
+                {artistId[0].artist_name}
+              </div>
               <div className="artistid-hero-description">
-                Here are list of songs by NIKI. Click the song to see its
-                reviews!
+                Here are list of songs by {artistId[0].artist_name}. Click the
+                song to see its reviews!
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import lowkey from "../../assets/genre/lowkey.png";
+import Masonry from "react-masonry-css";
 
 const SongId = () => {
   return (
@@ -24,70 +25,48 @@ const SongId = () => {
         <div className="songid-reviews">
           <div className="songid-reviews-title">Reviews</div>
           <div className="songid-reviews-container">
-            <div className="songid-reviews-row">
-              <div className="songid-reviews-column">
-                <div className="songid-reviews-content-container">
-                  <div className="songid-reviews-content-review">
-                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Pellentesque et augue sit amet augue dignissim imperdiet. Ut
-                    vel elementum mauris. Etiam nec elementum odio, ac malesuada
-                    felis. Etiam euismod a risus imperdiet eleifend. Fusce
-                    accumsan tellus rhoncus, rhoncus massa non, dapibus risus.
-                    Cras facilisis vitae sem vel consequat. Maecenas semper
-                    lobortis arcu, at semper libero ultricies sed. Nulla maximus
-                    pulvinar orci ut varius. Integer placerat consectetur magna
-                    sed commodo. “
-                  </div>
-                  <div className="songid-reviews-content-reviewer">
-                    Muhammad Hadi - 4.5
-                  </div>
+            <Masonry
+              breakpointCols={2}
+              className="my-masonry-grid"
+              columnClassName="my-masonry-grid_column"
+            >
+              <div className="songid-reviews-each">
+                <div className="songid-reviews-each-review">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam
+                </div>
+                <div className="songid-reviews-each-name-rating">
+                  Muhammad Hadi - 4.5
                 </div>
               </div>
-              <div className="songid-reviews-column">
-                <div className="songid-reviews-content-container">
-                  <div className="songid-reviews-content-review">
-                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Pellentesque et augue sit amet augue dignissim imperdiet. Ut
-                    vel elementum mauris. Etiam nec elementum odio, ac malesuada
-                    felis. Etiam euismod a risus imperdiet eleifend. “
-                  </div>
-                  <div className="songid-reviews-content-reviewer">
-                    Muhammad Hadi - 4.5
-                  </div>
+              <div className="songid-reviews-each">
+                <div className="songid-reviews-each-review">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </div>
+                <div className="songid-reviews-each-name-rating">
+                  Muhammad Hadi - 4.5
                 </div>
               </div>
-            </div>
-            <div className="songid-reviews-row">
-              <div className="songid-reviews-column">
-                <div className="songid-reviews-content-container">
-                  <div className="songid-reviews-content-review">
-                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Pellentesque et augue sit amet augue dignissim imperdiet. Ut
-                    vel elementum mauris. Etiam nec elementum odio, ac malesuada
-                    felis. Etiam euismod a risus imperdiet eleifend. “
-                  </div>
-                  <div className="songid-reviews-content-reviewer">
-                    Muhammad Hadi - 4.5
-                  </div>
+              <div className="songid-reviews-each">
+                <div className="songid-reviews-each-review">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </div>
+                <div className="songid-reviews-each-name-rating">
+                  Muhammad Hadi - 4.5
                 </div>
               </div>
-              <div className="songid-reviews-column">
-                <div className="songid-reviews-content-container">
-                  <div className="songid-reviews-content-review">
-                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Pellentesque et augue sit amet augue dignissim imperdiet. Ut
-                    vel elementum mauris. Etiam nec elementum odio, ac malesuada
-                    felis. Etiam euismod a risus imperdiet eleifend. Fusce
-                    accumsan tellus rhoncus, rhoncus massa non, dapibus risus.
-                    Cras facilisis vitae sem vel consequat. Maecenas semper
-                    lobortis arcu, at semper libero ultricies sed. “
-                  </div>
-                  <div className="songid-reviews-content-reviewer">
-                    Muhammad Hadi - 4.5
-                  </div>
-                </div>
-              </div>
-            </div>
+            </Masonry>
           </div>
         </div>
       </div>

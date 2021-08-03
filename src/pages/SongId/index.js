@@ -7,28 +7,31 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const SongId = () => {
   const [songId, setSongId] = useState([]);
-  const [reviews, setReview] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [reviews, setReviews] = useState([]);
   const { id } = useParams();
   const { isAuthenticated } = useAuth0();
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     const fetchSongId = async () => {
       const response = await songService.getSongById(id);
-      console.log(response.data.data[0]);
+      // console.log(response.data.data[0]);
       setSongId(response.data.data[0]);
     };
 
-    const fetchSongReviews = async () => {
+    const fetchSongReviews = async (id) => {
       const response = await songService.getReviewsSongById(id);
-      console.log(response.data);
-      setReview(response.data);
+      console.log(response.data.data);
+      setReviews(response.data.data);
     };
 
     fetchSongId();
-    fetchSongReviews();
+    fetchSongReviews(id);
+    setLoading(true);
   }, [id]);
 
+  if (loading === false) return null;
   return (
     <>
       <div className="songid-container">
@@ -56,7 +59,26 @@ const SongId = () => {
           <div className="songid-reviews-title">Add Review</div>
           <div className="songid-reviews-container">
             {isAuthenticated ? (
-              <>Add your reviews here.</>
+              <>
+                <div className="songid-reviews-input-title">
+                  Add Your Reviews Here
+                </div>
+                <div className="songid-reviews-input-area">
+                  <input type="text" className="songid-reviews-input" />
+                </div>
+                <div className="songid-reviews-input-title">
+                  Add Your Rating Here
+                </div>
+                <div className="songid-reviews-input-area">
+                  <input type="number" className="songid-reviews-rating" />
+                </div>
+                <br />
+                <div>
+                  <button type="button" className="songid-reviews-submit">
+                    Submit Reviews
+                  </button>
+                </div>
+              </>
             ) : (
               <>Login to add Reviews!</>
             )}
@@ -68,7 +90,7 @@ const SongId = () => {
               className="my-masonry-grid"
               columnClassName="my-masonry-grid_column"
             >
-              {reviews.length === 0 ? (
+              {reviews.length === 0 && loading === true ? (
                 <>No reviews currently available</>
               ) : (
                 <>

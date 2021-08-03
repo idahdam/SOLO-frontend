@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
-import lowkey from "../../assets/genre/lowkey.png";
 import { Link, useParams } from "react-router-dom";
+import { songService } from "../../services/songService";
 
 const GenreId = () => {
+  const [songs, setSongs] = useState([]);
+  // const [typeId, setTypeId] = useState();
   let { type } = useParams();
+  console.log(type);
+
+  useEffect(() => {
+    const fetchSongs = async (type) => {
+      const response = await songService.getSongByGenre(type);
+      console.log(response.data.data);
+      setSongs(response.data.data);
+    };
+    fetchSongs(type);
+  }, [type]);
+
   return (
     <>
       <div className="genre-container">
@@ -13,24 +26,28 @@ const GenreId = () => {
         </div>
         <div className="genre-list-container">
           <div className="genre-list-row">
-            <div className="genre-list-column">
-              <Link to="/song/id">
-                <img src={lowkey} alt="genre" className="genre-each-image" />
-              </Link>
-              <div className="genre-each-name">Niki</div>
-            </div>
-            <div className="genre-list-column">
-              <Link to="/song/id">
-                <img src={lowkey} alt="genre" className="genre-each-image" />
-              </Link>
-              <div className="genre-each-name">Niki</div>
-            </div>
-            <div className="genre-list-column">
-              <Link to="/song/id">
-                <img src={lowkey} alt="genre" className="genre-each-image" />
-              </Link>
-              <div className="genre-each-name">Niki</div>
-            </div>
+            {songs.length === 0 ? (
+              <>No songs yet.</>
+            ) : (
+              <>
+                {songs.map((data, index) => {
+                  return (
+                    <>
+                      <div className="genre-list-column" key={index + 1}>
+                        <Link to={`/song/${data.song_id}`}>
+                          <img
+                            src={data.song_picture}
+                            alt="genre"
+                            className="genre-each-image"
+                          />
+                        </Link>
+                        <div className="genre-each-name">{data.song_title}</div>
+                      </div>
+                    </>
+                  );
+                })}
+              </>
+            )}
           </div>
         </div>
       </div>

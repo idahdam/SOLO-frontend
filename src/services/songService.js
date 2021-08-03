@@ -24,7 +24,7 @@ async function getSongById(id) {
 
 async function getSongByGenre(genre) {
   const body = {};
-  const response = await gatewayHelper.http("GET", "song/" + genre, body);
+  const response = await gatewayHelper.http("GET", "song/genre/" + genre, body);
   return response;
 }
 

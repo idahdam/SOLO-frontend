@@ -11,7 +11,6 @@ import { artistService } from "../../services/artistService";
 
 const Home = () => {
   const [artist, setArtist] = useState([]);
-
   useEffect(() => {
     const fetchArtist = async () => {
       const response = await artistService.getAllArtist();

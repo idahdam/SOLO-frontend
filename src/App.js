@@ -9,6 +9,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/admin" component={Admin} />
         <Route exact path="/about" component={About} />
         <Route exact path="/artist" component={Artist} />
         <Route exact path="/artist/:id" component={ArtistId} />

@@ -6,6 +6,16 @@ async function getAllSong() {
   return response;
 }
 
+async function getReviewsSongById(id) {
+  const body = {};
+  const response = await gatewayHelper.http(
+    "GET",
+    "song/" + id + "/reviews",
+    body
+  );
+  return response;
+}
+
 async function getSongById(id) {
   const body = {};
   const response = await gatewayHelper.http("GET", "song/" + id, body);
@@ -28,5 +38,6 @@ export const songService = {
   getAllSong,
   getSongById,
   getSongByGenre,
+  getReviewsSongById,
   postSong,
 };

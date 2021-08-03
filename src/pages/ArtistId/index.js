@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import lowkey from "../../assets/genre/lowkey.png";
 import { Link, useParams } from "react-router-dom";
 import { artistService } from "../../services/artistService";
 
@@ -48,7 +47,29 @@ const ArtistId = () => {
           <div className="artistid-songlist-title">Song List</div>
           <div className="artistid-songlist-row">
             <div className="artistid-songlist-column">
-              <div className="artistid-songlist-each-row">
+              {artistId.length === 0 ? (
+                <>No songs for this artist at the moment</>
+              ) : (
+                <>
+                  {artistId.map((data, index) => {
+                    return (
+                      <>
+                        <Link to={`/song/${data.song_id}`}>
+                          <img
+                            src={data.song_picture}
+                            alt="song"
+                            className="artistid-songlist-image"
+                          />
+                        </Link>
+                        <div className="artistid-songlist-text">
+                          {data.song_title}
+                        </div>
+                      </>
+                    );
+                  })}
+                </>
+              )}
+              {/* <div className="artistid-songlist-each-row">
                 <div className="artistid-songlist-each-column artistid-songlist-each-left">
                   <Link to="/song/id">
                     <img
@@ -61,10 +82,10 @@ const ArtistId = () => {
                 <div className="artistid-songlist-each-column artistid-songlist-each-right">
                   <div className="artistid-songlist-text">Lowkey</div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="artistid-songlist-column">
-              <div className="artistid-songlist-each-row">
+              {/* <div className="artistid-songlist-each-row">
                 <div className="artistid-songlist-each-column artistid-songlist-each-left">
                   <Link to="/song/id">
                     <img
@@ -77,7 +98,7 @@ const ArtistId = () => {
                 <div className="artistid-songlist-each-column artistid-songlist-each-right">
                   <div className="artistid-songlist-text">Lowkey</div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -1,9 +1,12 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import AuthNav from "../auth/authnav";
 import "./index.css";
 
 function Navbar() {
   const [click, setClick] = useState(false);
+  const { isAuthenticated, user, isLoading } = useAuth0();
 
   const handleClick = () => setClick(!click);
   return (
@@ -31,15 +34,6 @@ function Navbar() {
               <a href="/#genres" className="nav-links">
                 Genre
               </a>
-              {/* <NavLink
-                exact
-                to="/genre"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Genre
-              </NavLink> */}
             </li>
             <li className="nav-item">
               <NavLink
@@ -52,16 +46,30 @@ function Navbar() {
                 About
               </NavLink>
             </li>
+            {user && user.email === "admin@solo.com" && isLoading === false ? (
+              <>
+                <NavLink
+                  exact
+                  to="/admin"
+                  activeClassName="active"
+                  className="nav-links"
+                  onClick={handleClick}
+                >
+                  Admin
+                </NavLink>
+              </>
+            ) : null}
+            {isAuthenticated ? (
+              <>
+                <li className="nav-item">
+                  <span className="nav-links" onClick={handleClick}>
+                    Logged in as <b>{user.email}</b>
+                  </span>
+                </li>
+              </>
+            ) : null}
             <li className="nav-item">
-              <NavLink
-                exact
-                to="/login"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Login
-              </NavLink>
+              <AuthNav />
             </li>
           </ul>
           <div className="nav-icon" onClick={handleClick}>

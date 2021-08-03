@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import niki from "../../assets/artist/niki.png";
 import lowkey from "../../assets/genre/lowkey.png";
 import { Link, useParams } from "react-router-dom";
 import { artistService } from "../../services/artistService";

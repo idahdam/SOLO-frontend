@@ -49,7 +49,9 @@ const Add = () => {
     if (
       songTitle === null ||
       genreId === null ||
+      genreId === "" ||
       artistId === null ||
+      artistId === "" ||
       songImage === null
     ) {
       Swal.fire("Please fill all.");
@@ -201,6 +203,9 @@ const Add = () => {
               <label className="add-label">Artist</label>
               <br />
               <select onChange={(e) => setArtistId(e.target.value)}>
+                <option value="" className="add-input">
+                  Choose one
+                </option>
                 {artist.map((data, index) => {
                   return (
                     <option
@@ -217,6 +222,9 @@ const Add = () => {
               <label className="add-label">Genre</label>
               <br />
               <select onChange={(e) => setGenreId(e.target.value)}>
+                <option value="" className="add-input">
+                  Choose one
+                </option>
                 {genres.map((data, index) => {
                   return (
                     <option

@@ -46,6 +46,15 @@ const Add = () => {
   }, []);
 
   const handleAddSong = () => {
+    if (
+      songTitle === null ||
+      genreId === null ||
+      artistId === null ||
+      songImage === null
+    ) {
+      Swal.fire("Please fill all.");
+      return;
+    }
     Swal.fire({
       title: `About to add a new song. Are you sure?`,
       showDenyButton: true,
@@ -62,6 +71,10 @@ const Add = () => {
   };
 
   const handleAddArtist = () => {
+    if (artistName === null || image === null) {
+      Swal.fire("Please fill all.");
+      return;
+    }
     Swal.fire({
       title: `About to add a new artist. Are you sure?`,
       showDenyButton: true,

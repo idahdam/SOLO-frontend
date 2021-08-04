@@ -48,15 +48,17 @@ function Navbar() {
             </li>
             {user && user.email === "admin@solo.com" && isLoading === false ? (
               <>
-                <NavLink
-                  exact
-                  to="/admin"
-                  activeClassName="active"
-                  className="nav-links"
-                  onClick={handleClick}
-                >
-                  Admin
-                </NavLink>
+                <li className="nav-item">
+                  <NavLink
+                    exact
+                    to="/admin"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={handleClick}
+                  >
+                    Admin
+                  </NavLink>
+                </li>
               </>
             ) : null}
             {isAuthenticated ? (
@@ -65,6 +67,17 @@ function Navbar() {
                   <span className="nav-links" onClick={handleClick}>
                     Logged in as <b>{user.email}</b>
                   </span>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    exact
+                    to="/add"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={handleClick}
+                  >
+                    Add
+                  </NavLink>
                 </li>
               </>
             ) : null}

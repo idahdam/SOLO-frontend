@@ -44,21 +44,25 @@ const Home = () => {
                     <>
                       {artist.map((item, index) => {
                         return (
-                          <div
-                            className="home-list-artist-each-column"
-                            key={index}
-                          >
-                            <Link to={`/artist/${item.artist_id}`}>
-                              <img
-                                src={item.artist_picture}
-                                alt="artist"
-                                className="home-list-artist-each-image"
-                              />
-                            </Link>
-                            <div className="home-list-artist-each-text">
-                              {item.artist_name}
-                            </div>
-                          </div>
+                          <>
+                            {index <= 2 ? (
+                              <div
+                                className="home-list-artist-each-column"
+                                key={index}
+                              >
+                                <Link to={`/artist/${item.artist_id}`}>
+                                  <img
+                                    src={item.artist_picture}
+                                    alt="artist"
+                                    className="home-list-artist-each-image"
+                                  />
+                                </Link>
+                                <div className="home-list-artist-each-text">
+                                  {item.artist_name}
+                                </div>
+                              </div>
+                            ) : null}
+                          </>
                         );
                       })}
                     </>

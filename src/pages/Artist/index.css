@@ -17,6 +17,7 @@
 }
 
 .artist-list-column {
+  padding-bottom: 2%;
   float: left;
   width: 33.33%;
 }

@@ -1,17 +1,53 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
+import Swal from "sweetalert2";
 import Masonry from "react-masonry-css";
 import { useParams } from "react-router-dom";
 import { songService } from "../../services/songService";
 import { useAuth0 } from "@auth0/auth0-react";
+import { reviewService } from "../../services/reviewService";
 
 const SongId = () => {
   const [songId, setSongId] = useState([]);
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState([]);
   const { id } = useParams();
-  const { isAuthenticated } = useAuth0();
-  // console.log(id);
+  const { isAuthenticated, user } = useAuth0();
+
+  // input
+  const [reviewContent, setReviewContent] = useState();
+  const [rating, setRating] = useState();
+
+  const handleAddReview = () => {
+    Swal.fire({
+      title: `About to add a new review. Are you sure?`,
+      showDenyButton: true,
+      confirmButtonText: `Yes`,
+      showCancelButton: `Yes`,
+      denyButtonText: `No`,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        onSubmitReview();
+      } else if (result.isDenied) {
+        Swal.fire("Operation canceled.", "", "info");
+      }
+    });
+  };
+  const onSubmitReview = async () => {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const addArtist = await reviewService
+        .postReview(id, {
+          reviewer: user.nickname,
+          content: reviewContent,
+          rating: rating,
+        })
+        .then(Swal.fire("Artist submit"));
+    } catch (error) {
+      Swal.fire("error");
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const fetchSongId = async () => {
@@ -22,7 +58,6 @@ const SongId = () => {
 
     const fetchSongReviews = async (id) => {
       const response = await songService.getReviewsSongById(id);
-      console.log(response.data.data);
       setReviews(response.data.data);
     };
 
@@ -58,23 +93,37 @@ const SongId = () => {
         <div className="songid-reviews">
           <div className="songid-reviews-title">Add Review</div>
           <div className="songid-reviews-container">
-            {isAuthenticated ? (
+            {isAuthenticated && user ? (
               <>
                 <div className="songid-reviews-input-title">
-                  Add Your Reviews Here
+                  Add Your Reviews Here as <b>{user.nickname}</b>
                 </div>
                 <div className="songid-reviews-input-area">
-                  <input type="text" className="songid-reviews-input" />
+                  <input
+                    type="text"
+                    className="songid-reviews-input"
+                    onChange={(e) => setReviewContent(e.target.value)}
+                  />
                 </div>
                 <div className="songid-reviews-input-title">
                   Add Your Rating Here
                 </div>
                 <div className="songid-reviews-input-area">
-                  <input type="number" className="songid-reviews-rating" />
+                  <input
+                    type="number"
+                    min="0.0"
+                    max="5.0"
+                    className="songid-reviews-rating"
+                    onChange={(e) => setRating(e.target.value)}
+                  />
                 </div>
                 <br />
                 <div>
-                  <button type="button" className="songid-reviews-submit">
+                  <button
+                    type="button"
+                    className="songid-reviews-submit"
+                    onClick={() => handleAddReview()}
+                  >
                     Submit Reviews
                   </button>
                 </div>
@@ -97,18 +146,12 @@ const SongId = () => {
                   {reviews.map((data, index) => {
                     return (
                       <>
-                        <div className="songid-reviews-each">
+                        <div className="songid-reviews-each" key={index}>
                           <div className="songid-reviews-each-review">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore
-                            eu fugiat nulla pariatur.
+                            {data.review_content}
                           </div>
                           <div className="songid-reviews-each-name-rating">
-                            Muhammad Hadi - 4.5
+                            {data.review_reviewer} - {data.review_rating}
                           </div>
                         </div>
                       </>

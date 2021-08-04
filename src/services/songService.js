@@ -28,9 +28,9 @@ async function getSongByGenre(genre) {
   return response;
 }
 
-async function postSong() {
+async function postSong(data) {
   const body = {};
-  const response = await gatewayHelper.http("POST", "song", body);
+  const response = await gatewayHelper.http("POST", "song", body, data);
   return response;
 }
 

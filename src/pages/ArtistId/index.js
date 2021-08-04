@@ -5,16 +5,24 @@ import { artistService } from "../../services/artistService";
 
 const ArtistId = () => {
   const [artistId, setArtistId] = useState([]);
+  const [artistSongs, setArtistSongs] = useState([]);
   const { id } = useParams();
-  console.log(id);
   useEffect(() => {
-    const fetchArtistByid = async (id) => {
+    const fetchArtistByidWithSongs = async (id) => {
       const response = await artistService.getAllArtistWithSongs(id);
-      setArtistId(response.data);
+      if (response.data.length > 0) {
+        setArtistSongs(response.data);
+      }
       console.log(response.data);
     };
 
-    fetchArtistByid(id);
+    const fectchArtistById = async (id) => {
+      const response = await artistService.getArtistById(id);
+      setArtistId(response.data);
+    };
+
+    fectchArtistById(id);
+    fetchArtistByidWithSongs(id);
   }, [id]);
 
   if (artistId.length === 0) return null;
@@ -46,14 +54,14 @@ const ArtistId = () => {
         <div className="artistid-songlist-container">
           <div className="artistid-songlist-title">Song List</div>
           <div className="artistid-songlist-row">
-            <div className="artistid-songlist-column">
-              {artistId.length === 0 ? (
-                <>No songs for this artist at the moment</>
-              ) : (
-                <>
-                  {artistId.map((data, index) => {
-                    return (
-                      <>
+            {artistSongs.length === 0 ? (
+              <>No songs for this artist at the moment</>
+            ) : (
+              <>
+                {artistSongs.map((data, index) => {
+                  return (
+                    <>
+                      <div className="artistid-songlist-column">
                         <Link to={`/song/${data.song_id}`}>
                           <img
                             src={data.song_picture}
@@ -64,42 +72,12 @@ const ArtistId = () => {
                         <div className="artistid-songlist-text">
                           {data.song_title}
                         </div>
-                      </>
-                    );
-                  })}
-                </>
-              )}
-              {/* <div className="artistid-songlist-each-row">
-                <div className="artistid-songlist-each-column artistid-songlist-each-left">
-                  <Link to="/song/id">
-                    <img
-                      src={lowkey}
-                      alt="song"
-                      className="artistid-songlist-image"
-                    />
-                  </Link>
-                </div>
-                <div className="artistid-songlist-each-column artistid-songlist-each-right">
-                  <div className="artistid-songlist-text">Lowkey</div>
-                </div>
-              </div> */}
-            </div>
-            <div className="artistid-songlist-column">
-              {/* <div className="artistid-songlist-each-row">
-                <div className="artistid-songlist-each-column artistid-songlist-each-left">
-                  <Link to="/song/id">
-                    <img
-                      src={lowkey}
-                      alt="song"
-                      className="artistid-songlist-image"
-                    />
-                  </Link>
-                </div>
-                <div className="artistid-songlist-each-column artistid-songlist-each-right">
-                  <div className="artistid-songlist-text">Lowkey</div>
-                </div>
-              </div> */}
-            </div>
+                      </div>
+                    </>
+                  );
+                })}
+              </>
+            )}
           </div>
         </div>
       </div>

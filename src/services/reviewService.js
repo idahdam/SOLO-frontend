@@ -10,9 +10,9 @@ async function getAllReviewsById(id) {
   const response = await gatewayHelper.http("GET", "review/" + id, body);
   return response;
 }
-async function postReview() {
+async function postReview(id, data) {
   const body = {};
-  const response = await gatewayHelper.http("POST", "review", body);
+  const response = await gatewayHelper.http("POST", "review/" + id, body, data);
   return response;
 }
 

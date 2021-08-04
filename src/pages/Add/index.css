@@ -1,0 +1,23 @@
+.add-container {
+  padding: 5%;
+}
+
+.add-container-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  padding-top: 1.5rem;
+}
+
+.add-song {
+  padding-top: 1%;
+}
+.add-label {
+  margin-top: 10%;
+  margin-bottom: 5%;
+  font-size: 1.5rem;
+}
+
+.add-input {
+  margin-bottom: 1%;
+}

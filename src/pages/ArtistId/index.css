@@ -73,11 +73,25 @@
 }
 
 .artistid-songlist-image {
-  width: 75%;
+  transition: 0.3s ease-in-out;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 275px;
+  height: 275px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.artist-songlist-image:hover {
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 10px 10px 5px grey;
 }
 
 .artistid-songlist-text {
-  padding-top: 10%;
+  padding-top: 5%;
+  text-align: center;
   font-weight: bold;
 }
 
@@ -87,14 +101,7 @@
 
 .artistid-songlist-each-column {
   float: left;
-}
-
-.artistid-songlist-each-left {
-  width: 25%;
-}
-
-.artistid-songlist-each-right {
-  width: 75%;
+  width: 50%;
 }
 
 /* Clear floats after the columns */

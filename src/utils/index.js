@@ -6,10 +6,10 @@ import axios from "axios";
  *
  */
 
-// const { REACT_APP_BACK_URL_STUFF } = process.env;
-// const BASE_URL = REACT_APP_BACK_URL_STUFF;
+const { REACT_APP_BACK_URL_STUFF } = process.env;
+const BASE_URL = REACT_APP_BACK_URL_STUFF;
 // uncomment ini.
-const BASE_URL = "http://localhost:5000/api/v1";
+// const BASE_URL = "http://localhost:5000/api/v1";
 
 async function http(method, endpoint, body = null, data) {
   const headers = {

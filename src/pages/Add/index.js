@@ -74,7 +74,7 @@ const Add = () => {
 
   const handleAddArtist = () => {
     if (artistName === null || image === null) {
-      Swal.fire("Please fill all.");
+      Swal.fire("Please fill all!");
       return;
     }
     Swal.fire({

@@ -29,11 +29,14 @@
 }
 
 .artistid-hero-image {
-  border-radius: 10px;
+  transition: 0.3s ease-in-out;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+  width: 275px;
+  height: 275px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .artistid-hero-row {
@@ -61,8 +64,9 @@
 }
 
 .artistid-songlist-column {
+  padding-bottom: 2%;
   float: left;
-  width: 50%;
+  width: 33.33%;
 }
 
 /* Clear floats after the columns */

@@ -17,6 +17,7 @@
 }
 
 .genre-list-column {
+  padding-bottom: 2%;
   float: left;
   width: 33.33%;
 }
@@ -35,8 +36,12 @@
 }
 
 .genre-each-image {
+  transition: 0.3s ease-in-out;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 85%;
+  width: 275px;
+  height: 275px;
+  border-radius: 10px;
+  object-fit: cover;
 }

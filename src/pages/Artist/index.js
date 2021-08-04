@@ -43,24 +43,6 @@ const Artist = () => {
                 })}
               </>
             )}
-            {/* <div className="artist-list-column">
-              <Link to="/artist/id">
-                <img src={niki} alt="artist" className="artist-each-image" />
-              </Link>
-              <div className="artist-each-name">Niki</div>
-            </div>
-            <div className="artist-list-column">
-              <Link to="/artist/id">
-                <img src={niki} alt="artist" className="artist-each-image" />
-              </Link>
-              <div className="artist-each-name">Niki</div>
-            </div>
-            <div className="artist-list-column">
-              <Link to="/artist/id">
-                <img src={niki} alt="artist" className="artist-each-image" />
-              </Link>
-              <div className="artist-each-name">Niki</div>
-            </div> */}
           </div>
         </div>
       </div>

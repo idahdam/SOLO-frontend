@@ -62,7 +62,11 @@ const ArtistId = () => {
                   return (
                     <>
                       <div className="artistid-songlist-column">
-                        <Link to={`/song/${data.song_id}-${data.song_title}`}>
+                        <Link
+                          to={`/song/${data.song_id}-${data.song_title
+                            .replaceAll(" ", "-")
+                            .toLowerCase()}`}
+                        >
                           <img
                             src={data.song_picture}
                             alt="song"

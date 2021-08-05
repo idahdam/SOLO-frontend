@@ -32,7 +32,7 @@ const Artist = () => {
                     <div className="artist-list-column" key={index}>
                       <Link
                         to={`/artist/${item.artist_id}-${item.artist_name
-                          .replace(" ", "-")
+                          .replaceAll(" ", "-")
                           .toLowerCase()}`}
                       >
                         <img

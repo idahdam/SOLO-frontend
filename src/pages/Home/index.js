@@ -168,11 +168,21 @@ const Home = () => {
                             </div>
                             <div className="songid-reviews-each-name-rating">
                               {data.review_reviewer} - {data.review_rating} on{" "}
-                              <Link to={`song/${data.song_id}`}>
+                              <Link
+                                to={`/song/${data.song_id}-${data.song_title
+                                  .replaceAll(" ", "-")
+                                  .toLowerCase()}`}
+                              >
                                 {data.song_title}
                               </Link>{" "}
                               by{" "}
-                              <Link to={`artist/${data.artist_id}`}>
+                              <Link
+                                to={`/artist/${
+                                  data.artist_id
+                                }-${data.artist_name
+                                  .replaceAll(" ", "-")
+                                  .toLowerCase()}`}
+                              >
                                 {data.artist_name}
                               </Link>
                             </div>

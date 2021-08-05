@@ -34,7 +34,11 @@ const GenreId = () => {
                   return (
                     <>
                       <div className="genre-list-column" key={index + 1}>
-                        <Link to={`/song/${data.song_id}-${data.song_title}`}>
+                        <Link
+                          to={`/song/${data.song_id}-${data.song_title
+                            .replaceAll(" ", "-")
+                            .toLowerCase()}`}
+                        >
                           <img
                             src={data.song_picture}
                             alt="genre"

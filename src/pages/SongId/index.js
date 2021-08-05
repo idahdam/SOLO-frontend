@@ -180,42 +180,6 @@ const SongId = () => {
                   })}
                 </>
               )}
-              {/* <div className="songid-reviews-each">
-                <div className="songid-reviews-each-review">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam
-                </div>
-                <div className="songid-reviews-each-name-rating">
-                  Muhammad Hadi - 4.5
-                </div>
-              </div> */}
-              {/* <div className="songid-reviews-each">
-                <div className="songid-reviews-each-review">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
-                </div>
-                <div className="songid-reviews-each-name-rating">
-                  Muhammad Hadi - 4.5
-                </div>
-              </div> */}
-              {/* <div className="songid-reviews-each">
-                <div className="songid-reviews-each-review">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
-                </div>
-                <div className="songid-reviews-each-name-rating">
-                  Muhammad Hadi - 4.5
-                </div>
-              </div> */}
             </Masonry>
           </div>
         </div>

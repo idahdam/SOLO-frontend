@@ -84,6 +84,25 @@ const SongId = () => {
     }
   };
 
+  const handleDeleteComment = async (id) => {
+    Swal.fire({
+      title: `About to delete one of the reviews. Are you sure?`,
+      showDenyButton: true,
+      confirmButtonText: `Yes`,
+      showCancelButton: `Yes`,
+      denyButtonText: `No`,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        // eslint-disable-next-line no-unused-vars
+        const response = await adminService
+          .deleteReviewById(id)
+          .then(Swal.fire("Deleted."));
+      } else if (result.isDenied) {
+        Swal.fire("Operation canceled.", "", "info");
+      }
+    });
+  };
+
   useEffect(() => {
     const fetchSongId = async () => {
       const response = await songService.getSongById(id);
@@ -98,7 +117,6 @@ const SongId = () => {
           rating += item.review_rating;
         }
         rating /= reviews.length;
-        console.log(rating);
         setAvg(rating);
         return;
       } else {
@@ -217,7 +235,20 @@ const SongId = () => {
                           "{data.review_content}"
                         </div>
                         <div className="songid-reviews-each-name-rating">
-                          {data.review_reviewer} - {data.review_rating}
+                          {data.review_reviewer} - {data.review_rating}{" "}
+                          {isAuthenticated && user.email === adminEmail ? (
+                            <>
+                              <button
+                                type="button"
+                                className="admin-only-button"
+                                onClick={() =>
+                                  handleDeleteComment(data.review_id)
+                                }
+                              >
+                                Delete
+                              </button>
+                            </>
+                          ) : null}
                         </div>
                       </div>
                     );

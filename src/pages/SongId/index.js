@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import Swal from "sweetalert2";
 import Masonry from "react-masonry-css";
-import { Redirect, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { songService } from "../../services/songService";
 import { useAuth0 } from "@auth0/auth0-react";
 import { reviewService } from "../../services/reviewService";
@@ -74,6 +74,7 @@ const SongId = () => {
 
   const onDeleteSong = async (id) => {
     try {
+      // eslint-disable-next-line no-unused-vars
       const response = await adminService
         .deleteSongById(id)
         .then(Swal.fire(`${songId.song_title} is deleted.`))

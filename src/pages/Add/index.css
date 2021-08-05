@@ -14,10 +14,18 @@
 }
 .add-label {
   margin-top: 10%;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
   font-size: 1.5rem;
 }
 
 .add-input {
   margin-bottom: 1%;
+}
+
+.submit-add {
+  font-size: 1rem;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 10px;
+  font-family: "Montserrat";
 }

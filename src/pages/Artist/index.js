@@ -30,7 +30,11 @@ const Artist = () => {
                 {artist.map((item, index) => {
                   return (
                     <div className="artist-list-column" key={index}>
-                      <Link to={`/artist/${item.artist_id}`}>
+                      <Link
+                        to={`/artist/${item.artist_id}-${item.artist_name
+                          .replace(" ", "-")
+                          .toLowerCase()}`}
+                      >
                         <img
                           src={item.artist_picture}
                           alt="artist"

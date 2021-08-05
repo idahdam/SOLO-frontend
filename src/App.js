@@ -22,8 +22,8 @@ function App() {
         <Route exact path="/add" component={Add} />
         <Route exact path="/about" component={About} />
         <Route exact path="/artist" component={Artist} />
-        <Route exact path="/artist/:id" component={ArtistId} />
-        <Route exact path="/song/:id" component={SongId} />
+        <Route exact path="/artist/:id-:name" component={ArtistId} />
+        <Route exact path="/song/:id-:name" component={SongId} />
         <Route exact path="/genre/:type" component={GenreId} />
         <Route exact path="/admin" component={Admin} />
       </Switch>

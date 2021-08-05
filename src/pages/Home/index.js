@@ -7,16 +7,24 @@ import classic from "../../assets/home/classic.png";
 import rap from "../../assets/home/rap.png";
 import edm from "../../assets/home/edm.png";
 import { Link } from "react-router-dom";
+import Masonry from "react-masonry-css";
 import { artistService } from "../../services/artistService";
+import { reviewService } from "../../services/reviewService";
 
 const Home = () => {
   const [artist, setArtist] = useState([]);
+  const [latestReviews, setLatestReviews] = useState([]);
   useEffect(() => {
     const fetchArtist = async () => {
       const response = await artistService.getAllArtist();
       setArtist(response.data);
     };
+    const fetchReviews = async () => {
+      const response = await reviewService.getAllReviews();
+      setLatestReviews(response.data);
+    };
     fetchArtist();
+    fetchReviews();
   }, []);
 
   return (
@@ -50,7 +58,13 @@ const Home = () => {
                                 className="home-list-artist-each-column"
                                 key={index}
                               >
-                                <Link to={`/artist/${item.artist_id}`}>
+                                <Link
+                                  to={`/artist/${
+                                    item.artist_id
+                                  }-${item.artist_name
+                                    .replace(" ", "-")
+                                    .toLowerCase()}`}
+                                >
                                   <img
                                     src={item.artist_picture}
                                     alt="artist"
@@ -132,6 +146,46 @@ const Home = () => {
                 <div className="home-list-genre-each-text">EDM</div>
               </div>
             </div>
+          </div>
+          <div className="home-list-container">
+            <div className="home-list-name" id="genres">
+              Latest Reviews
+            </div>
+            <Masonry
+              breakpointCols={2}
+              className="my-masonry-grid"
+              columnClassName="my-masonry-grid_column"
+            >
+              {latestReviews.length > 0 ? (
+                <>
+                  {latestReviews.map((data, index) => {
+                    return (
+                      <>
+                        {index < 5 ? (
+                          <div className="songid-reviews-each" key={index}>
+                            <div className="songid-reviews-each-review">
+                              "{data.review_content}"
+                            </div>
+                            <div className="songid-reviews-each-name-rating">
+                              {data.review_reviewer} - {data.review_rating} on{" "}
+                              <Link to={`song/${data.song_id}`}>
+                                {data.song_title}
+                              </Link>{" "}
+                              by{" "}
+                              <Link to={`artist/${data.artist_id}`}>
+                                {data.artist_name}
+                              </Link>
+                            </div>
+                          </div>
+                        ) : null}
+                      </>
+                    );
+                  })}
+                </>
+              ) : (
+                <>No reviews yet.</>
+              )}
+            </Masonry>
           </div>
         </div>
       </div>

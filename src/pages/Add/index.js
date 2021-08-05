@@ -105,7 +105,7 @@ const Add = () => {
           picture: imageUrl,
           name: artistName,
         })
-        .then(Swal.fire("Artist submit"));
+        .then(Swal.fire("Artist added"));
     } catch (error) {
       Swal.fire("error");
       console.log(error);
@@ -128,7 +128,7 @@ const Add = () => {
           artistId,
           genreId,
         })
-        .then(Swal.fire("Song submitted"));
+        .then(Swal.fire("Song added"));
     } catch (error) {}
   };
 
@@ -177,7 +177,11 @@ const Add = () => {
                 onChange={onSelectFile}
               />
               <br />
-              <button type="button" onClick={() => handleAddArtist()}>
+              <button
+                type="button"
+                className="submit-add"
+                onClick={() => handleAddArtist()}
+              >
                 Add Artist
               </button>
             </div>
@@ -202,43 +206,51 @@ const Add = () => {
               <br />
               <label className="add-label">Artist</label>
               <br />
-              <select onChange={(e) => setArtistId(e.target.value)}>
-                <option value="" className="add-input">
-                  Choose one
-                </option>
-                {artist.map((data, index) => {
-                  return (
-                    <option
-                      value={`${data.artist_id}`}
-                      className="add-input"
-                      key={index}
-                    >
-                      {data.artist_name}
-                    </option>
-                  );
-                })}
-              </select>
+              <div className="selection-contianer">
+                <select onChange={(e) => setArtistId(e.target.value)}>
+                  <option value="" className="add-input">
+                    Choose one
+                  </option>
+                  {artist.map((data, index) => {
+                    return (
+                      <option
+                        value={`${data.artist_id}`}
+                        className="add-input"
+                        key={index}
+                      >
+                        {data.artist_name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
               <br />
               <label className="add-label">Genre</label>
               <br />
-              <select onChange={(e) => setGenreId(e.target.value)}>
-                <option value="" className="add-input">
-                  Choose one
-                </option>
-                {genres.map((data, index) => {
-                  return (
-                    <option
-                      value={`${data.genre_id}`}
-                      className="add-input"
-                      key={index}
-                    >
-                      {data.genre_type}
-                    </option>
-                  );
-                })}
-              </select>
+              <div className="selection-contianer">
+                <select onChange={(e) => setGenreId(e.target.value)}>
+                  <option value="" className="add-input">
+                    Choose one
+                  </option>
+                  {genres.map((data, index) => {
+                    return (
+                      <option
+                        value={`${data.genre_id}`}
+                        className="add-input"
+                        key={index}
+                      >
+                        {data.genre_type}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
               <br />
-              <button type="button" onClick={() => handleAddSong()}>
+              <button
+                type="button"
+                className="submit-add"
+                onClick={() => handleAddSong()}
+              >
                 Add Song
               </button>
             </div>

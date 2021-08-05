@@ -11,6 +11,7 @@ const SongId = () => {
   const [songId, setSongId] = useState([]);
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState([]);
+  const [avg, setAvg] = useState(0);
   const { id } = useParams();
   const { isAuthenticated, user } = useAuth0();
 
@@ -19,6 +20,10 @@ const SongId = () => {
   const [rating, setRating] = useState();
 
   const handleAddReview = () => {
+    if (rating < 0 || rating > 5) {
+      Swal.fire("Error. Rating out of range. (0-5)");
+      return;
+    }
     Swal.fire({
       title: `About to add a new review. Are you sure?`,
       showDenyButton: true,
@@ -42,7 +47,7 @@ const SongId = () => {
           content: reviewContent,
           rating: rating,
         })
-        .then(Swal.fire("Artist submit"));
+        .then(Swal.fire("Review added"));
     } catch (error) {
       Swal.fire("error");
       console.log(error);
@@ -56,15 +61,31 @@ const SongId = () => {
       setSongId(response.data.data[0]);
     };
 
+    const countAvg = () => {
+      if (reviews.length !== 0) {
+        var rating = 0;
+        for (var item of reviews) {
+          rating += item.review_rating;
+        }
+        rating /= reviews.length;
+        console.log(rating);
+        setAvg(rating);
+        return;
+      } else {
+        return;
+      }
+    };
+
     const fetchSongReviews = async (id) => {
       const response = await songService.getReviewsSongById(id);
       setReviews(response.data.data);
+      countAvg();
     };
 
     fetchSongId();
     fetchSongReviews(id);
     setLoading(true);
-  }, [id]);
+  }, [id, reviews.length, reviews.rating, reviews]);
 
   if (loading === false) return null;
   return (
@@ -82,7 +103,9 @@ const SongId = () => {
               </div>
             </div>
             <div className="songid-hero-column songid-hero-right">
-              <div className="songid-hero-text">{songId.song_title}</div>
+              <div className="songid-hero-text">
+                {songId.song_title} - {avg}/5 rating
+              </div>
               <div className="songid-hero-description">
                 Here is a song by {songId.artist_name}. Scroll to see its
                 reviews!
@@ -145,16 +168,14 @@ const SongId = () => {
                 <>
                   {reviews.map((data, index) => {
                     return (
-                      <>
-                        <div className="songid-reviews-each" key={index}>
-                          <div className="songid-reviews-each-review">
-                            {data.review_content}
-                          </div>
-                          <div className="songid-reviews-each-name-rating">
-                            {data.review_reviewer} - {data.review_rating}
-                          </div>
+                      <div className="songid-reviews-each" key={index}>
+                        <div className="songid-reviews-each-review">
+                          "{data.review_content}"
                         </div>
-                      </>
+                        <div className="songid-reviews-each-name-rating">
+                          {data.review_reviewer} - {data.review_rating}
+                        </div>
+                      </div>
                     );
                   })}
                 </>
@@ -168,8 +189,8 @@ const SongId = () => {
                 <div className="songid-reviews-each-name-rating">
                   Muhammad Hadi - 4.5
                 </div>
-              </div>
-              <div className="songid-reviews-each">
+              </div> */}
+              {/* <div className="songid-reviews-each">
                 <div className="songid-reviews-each-review">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -181,8 +202,8 @@ const SongId = () => {
                 <div className="songid-reviews-each-name-rating">
                   Muhammad Hadi - 4.5
                 </div>
-              </div>
-              <div className="songid-reviews-each">
+              </div> */}
+              {/* <div className="songid-reviews-each">
                 <div className="songid-reviews-each-review">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.

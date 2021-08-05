@@ -107,8 +107,7 @@ const Add = () => {
         })
         .then(Swal.fire("Artist added"));
     } catch (error) {
-      Swal.fire("error");
-      console.log(error);
+      Swal.fire("error " + error);
     }
   };
 

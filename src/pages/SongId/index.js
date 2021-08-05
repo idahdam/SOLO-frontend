@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import Swal from "sweetalert2";
 import Masonry from "react-masonry-css";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { songService } from "../../services/songService";
 import { useAuth0 } from "@auth0/auth0-react";
 import { reviewService } from "../../services/reviewService";
+import { adminService } from "../../services/adminService";
 
+const adminEmail = process.env.REACT_APP_ADMIN_EMAIL;
 const SongId = () => {
+  const { isAuthenticated, user } = useAuth0();
   const [songId, setSongId] = useState([]);
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [avg, setAvg] = useState(0);
   const { id } = useParams();
-  const { isAuthenticated, user } = useAuth0();
 
   // input
   const [reviewContent, setReviewContent] = useState();
@@ -51,6 +53,33 @@ const SongId = () => {
     } catch (error) {
       Swal.fire("error");
       console.log(error);
+    }
+  };
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: `About to delete '${songId.song_title}' song. Are you sure?`,
+      showDenyButton: true,
+      confirmButtonText: `Yes`,
+      showCancelButton: `Yes`,
+      denyButtonText: `No`,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        onDeleteSong(id);
+      } else if (result.isDenied) {
+        Swal.fire("Operation canceled.", "", "info");
+      }
+    });
+  };
+
+  const onDeleteSong = async (id) => {
+    try {
+      const response = await adminService
+        .deleteSongById(id)
+        .then(Swal.fire(`${songId.song_title} is deleted.`))
+        .then((window.location.href = "/"));
+    } catch (error) {
+      Swal.fire("error " + error);
     }
   };
 
@@ -111,6 +140,20 @@ const SongId = () => {
                 reviews!
               </div>
             </div>
+            {isAuthenticated && user.email === adminEmail ? (
+              <>
+                <button type="button" className="admin-only-button">
+                  Edit
+                </button>{" "}
+                <button
+                  type="button"
+                  className="admin-only-button"
+                  onClick={() => handleDelete()}
+                >
+                  Delete
+                </button>
+              </>
+            ) : null}
           </div>
         </div>
         <div className="songid-reviews">

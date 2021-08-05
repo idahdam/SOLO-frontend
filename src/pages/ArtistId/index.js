@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./index.css";
 import { Link, useParams } from "react-router-dom";
 import { artistService } from "../../services/artistService";
 
+const adminEmail = process.env.REACT_APP_ADMIN_EMAIL;
 const ArtistId = () => {
+  const { isAuthenticated, user } = useAuth0();
   const [artistId, setArtistId] = useState([]);
   const [artistSongs, setArtistSongs] = useState([]);
   const { id } = useParams();
@@ -42,12 +45,22 @@ const ArtistId = () => {
             </div>
             <div className="artistid-hero-column artistid-hero-right">
               <div className="artistid-hero-text">
-                {artistId[0].artist_name}
+                {artistId[0].artist_name}{" "}
               </div>
               <div className="artistid-hero-description">
                 Here are list of songs by {artistId[0].artist_name}. Click the
                 song to see its reviews!
               </div>
+              {isAuthenticated && user.email === adminEmail ? (
+                <>
+                  <button type="button" className="admin-only-button">
+                    Edit
+                  </button>{" "}
+                  <button type="button" className="admin-only-button">
+                    Delete
+                  </button>
+                </>
+              ) : null}
             </div>
           </div>
         </div>

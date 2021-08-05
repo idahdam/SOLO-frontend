@@ -1,6 +1,8 @@
 export { default as Home } from "./Home";
 export { default as About } from "./About";
 export { default as Add } from "./Add";
+export { default as EditSong } from "./Edit/EditSong";
+export { default as EditArtist } from "./Edit/EditArtist";
 export { default as Artist } from "./Artist";
 export { default as ArtistId } from "./ArtistId";
 export { default as GenreId } from "./GenreId";

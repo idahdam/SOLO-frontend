@@ -1,8 +1,8 @@
 import { gatewayHelper } from "../utils";
 
-async function updateArtistById(id) {
+async function updateArtistById(id, data) {
   const body = {};
-  const response = await gatewayHelper.http("PUT", "artist/" + id, body);
+  const response = await gatewayHelper.http("PUT", "artist/" + id, body, data);
   return response;
 }
 
@@ -12,9 +12,9 @@ async function deleteArtistById(id) {
   return response;
 }
 
-async function updateReviewById(id) {
+async function updateReviewById(id, data) {
   const body = {};
-  const response = await gatewayHelper.http("PUT", "review/" + id, body);
+  const response = await gatewayHelper.http("PUT", "review/" + id, body, data);
   return response;
 }
 
@@ -24,9 +24,9 @@ async function deleteReviewById(id) {
   return response;
 }
 
-async function updateSongById(id) {
+async function updateSongById(id, data) {
   const body = {};
-  const response = await gatewayHelper.http("PUT", "song/" + id, body);
+  const response = await gatewayHelper.http("PUT", "song/" + id, body, data);
   return response;
 }
 

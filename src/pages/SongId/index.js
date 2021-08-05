@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import Swal from "sweetalert2";
 import Masonry from "react-masonry-css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { songService } from "../../services/songService";
 import { useAuth0 } from "@auth0/auth0-react";
 import { reviewService } from "../../services/reviewService";
@@ -15,7 +15,7 @@ const SongId = () => {
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [avg, setAvg] = useState(0);
-  const { id } = useParams();
+  const { name, id } = useParams();
 
   // input
   const [reviewContent, setReviewContent] = useState();
@@ -144,7 +144,7 @@ const SongId = () => {
             {isAuthenticated && user.email === adminEmail ? (
               <>
                 <button type="button" className="admin-only-button">
-                  Edit
+                  <Link to={`/song/${id}-${name}/edit`}>Edit</Link>
                 </button>{" "}
                 <button
                   type="button"

@@ -16,7 +16,7 @@
   align-items: center;
   width: 100%;
   height: 80px;
-  max-width: 1500px;
+  max-width: 100%;
 }
 
 .nav-logo {
@@ -84,15 +84,16 @@
     width: 100%;
     border-top: 1pxsolid #fff;
     position: absolute;
-    top: 80px;
-    left: -110%;
+    top: 50px;
+    left: 120%;
     opacity: 1;
     transition: all 0.5s ease;
   }
 
   .nav-menu.active {
-    background: #1f5156;
+    background: #ffdd40;
     left: 0px;
+    right: 10px;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
@@ -115,6 +116,6 @@
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
-    color: #ffdd40;
+    color: #213263;
   }
 }

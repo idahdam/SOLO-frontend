@@ -185,7 +185,7 @@ const EditSong = () => {
               className="submit-add"
               onClick={() => handleEditSong()}
             >
-              Add Song
+              Edit Song
             </button>
           </div>
         </div>

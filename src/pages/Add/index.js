@@ -158,6 +158,10 @@ const Add = () => {
         <>
           <div className="add-container">
             <div className="add-container-title">Add artist or song here.</div>
+            <div className="add-container-desc">
+              Add song if your artist is already present. If not, add them first
+              before adding. Don't forget to reload after adding.
+            </div>
             <div className="add-container-title">Artist</div>
             <div className="add-artist">
               <label className="add-label">Artist Name</label>

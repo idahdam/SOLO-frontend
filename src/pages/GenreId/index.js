@@ -7,12 +7,10 @@ const GenreId = () => {
   const [songs, setSongs] = useState([]);
   // const [typeId, setTypeId] = useState();
   let { type } = useParams();
-  console.log(type);
 
   useEffect(() => {
     const fetchSongs = async (type) => {
       const response = await songService.getSongByGenre(type);
-      console.log(response.data.data);
       setSongs(response.data.data);
     };
     fetchSongs(type);

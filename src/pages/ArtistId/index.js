@@ -18,7 +18,6 @@ const ArtistId = () => {
       if (response.data.length > 0) {
         setArtistSongs(response.data);
       }
-      console.log(response.data);
     };
 
     const fectchArtistById = async (id) => {

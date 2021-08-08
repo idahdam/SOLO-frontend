@@ -11,7 +11,6 @@ const { REACT_APP_PRESET_NAME, REACT_APP_CLOUD_URL } = process.env;
 const url = REACT_APP_CLOUD_URL;
 const preset = REACT_APP_PRESET_NAME;
 const Add = () => {
-  console.log(process.env);
   const { isAuthenticated, isLoading } = useAuth0();
   const [image, setImage] = useState(null);
   const [songImage, setSongImage] = useState(null);
@@ -37,7 +36,6 @@ const Add = () => {
 
     const fetchArtist = async () => {
       const response = await artistService.getAllArtist();
-      console.log(response.data);
       setArtist(response.data);
     };
 

@@ -27,7 +27,6 @@ const Admin = () => {
     };
     const fetchReviews = async () => {
       const response = await reviewService.getAllReviews();
-      console.log(response.data);
       setReviews(response.data);
     };
     fetchArtist();

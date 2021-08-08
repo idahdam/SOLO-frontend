@@ -25,7 +25,7 @@ const EditArtist = () => {
 
   const handleAddArtist = () => {
     Swal.fire({
-      title: `About to update a song. Are you sure?`,
+      title: `About to update an artist. Are you sure?`,
       showDenyButton: true,
       confirmButtonText: `Yes`,
       showCancelButton: `Yes`,
@@ -77,9 +77,9 @@ const EditArtist = () => {
   useEffect(() => {
     const fetchArtist = async () => {
       const response = await artistService.getArtistById(id);
-      console.log(response.data);
       setArtist(response.data);
       setImageLink(response.data[0].artist_picture);
+      setArtistName(response.data[0].artist_name);
     };
 
     fetchArtist(id);
